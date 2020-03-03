@@ -48,6 +48,9 @@ fclean: clean
 	@make fclean -s -C $(LIB_DIR)
 	@printf "\033[0m\033[33m%-40s\033[1m\033[34m%s\033[0m\n" "Full Clean" "Done"
 
+test: all
+	sudo ./$(NAME) ya.ru
+
 re:	clean all
 
 .PHONY: all, clean, fclean, re

@@ -11,7 +11,8 @@ void	cleanup(t_ping *ping, const char *format, ...)
 	
 	if (!ping)
 		exit (EXIT_FAILURE);
-	if (format && (ext_format = ft_powerjoin("%s: %s\n", ping->program_name, format)))
+	if (format && (ext_format =\
+			ft_powerjoin("%s: %s\n", ping->program_name, format)))
 	{
 		va_start(args, format);
 		vdprintf(STDERR_FILENO, ext_format, args);
@@ -31,5 +32,8 @@ void	init(t_ping **ping, char **av)
 		cleanup (NULL, MALLOC_FAILURE);
 	ret->program_name = av[0];
 	ret->dst_name = av[1];
+	ret->packet_count = DEF_PACKET_COUNT;
+	ret->packet_size = DEF_PACKET_SIZE;
+	ret->packet_delay = DEF_PACKET_DELAY;
 	*ping = ret;
 }
